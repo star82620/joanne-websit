@@ -1,6 +1,27 @@
-@mixin tablet {
+@mixin mw-1279 {
+  @media (max-width: 1279px) {
+    @content;
+  }
+}
+@mixin mw-768 {
   @media (max-width: 768px) {
     @content;
+  }
+}
+
+@mixin mw-375 {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+
+@mixin page-padding {
+  padding-left: 12px;
+  padding-right: 12px;
+
+  @include mw-768() {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -48,6 +69,7 @@ body {
   h2 {
     font-size: 64px;
     font-weight: 500;
+    text-align: center;
   }
 
   .fz-24 {
@@ -59,12 +81,21 @@ body {
 #banner {
   background: #e6e7e8 url("../image/banner.png") no-repeat center center / cover;
   padding: 308px 0;
+  @include page-padding();
 
   .banner-wrap {
     @include w-1200();
     justify-content: space-between;
     align-items: center;
     color: #fff;
+
+    .banner-name {
+      @include mw-375() {
+        h1 {
+          font-size: 72px;
+        }
+      }
+    }
 
     .banner-desc {
       margin: 32px 0 40px;
@@ -85,14 +116,17 @@ body {
 
 #about {
   padding: 56px 0;
+  @include page-padding();
+
   .about-wrap {
     @include w-1200();
     justify-content: center;
     align-items: center;
 
     .about-img {
-      width: 384px;
-      height: 384px;
+      max-width: 384px;
+      max-height: 384px;
+      width: 100%;
       margin-top: 40px;
     }
 
@@ -120,7 +154,8 @@ body {
       .about-experience {
         display: flex;
         flex-direction: column;
-        width: 384px;
+        max-width: 384px;
+        width: 100%;
         margin-top: 28px;
         padding-top: 28px;
         border-top: 1px solid #000;
@@ -139,6 +174,8 @@ body {
           background-color: #891818;
           position: absolute;
           left: 0;
+          top: 16px;
+          transform: translateY(-50%);
         }
       }
     }
@@ -149,6 +186,7 @@ body {
   padding: 56px 0 160px;
   background-color: #000;
   color: #fff;
+  @include page-padding();
 
   .brand-wrap {
     @include w-1200();
@@ -172,12 +210,18 @@ body {
       align-items: center;
       margin-top: 68px;
       gap: 40px 24px;
+
+      @include mw-1279() {
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
     }
   }
 }
 
 #other-works {
   padding: 56px 0 144px;
+  @include page-padding();
 
   .other-works-wrap {
     @include w-1200();
@@ -197,6 +241,11 @@ body {
       flex-wrap: wrap;
       gap: 48px 24px;
 
+      @include mw-1279() {
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+
       li {
         text-align: center;
 
@@ -212,14 +261,19 @@ body {
   padding: 64px 0;
   background-color: #000;
   color: #fff;
+  @include page-padding();
 
   .contact-wrap {
     @include w-1200();
     justify-content: center;
     align-items: center;
 
-    p {
-      margin-top: 16px;
+    .contact-content {
+      .contact-mail,
+      .contact-phone {
+        margin-top: 16px;
+        text-align: center;
+      }
     }
   }
 }
