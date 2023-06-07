@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap");
+
 @mixin mw-1279 {
   @media (max-width: 1279px) {
     @content;
@@ -26,11 +28,11 @@
 }
 
 @mixin w-1200 {
+  display: flex;
+  flex-direction: column;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
 }
 
 html,
@@ -40,6 +42,7 @@ body {
   font-style: italic;
   font-weight: bold;
   font-size: 20px;
+  font-family: "Roboto", sans-serif;
 
   * {
     margin: 0;
@@ -154,10 +157,10 @@ body {
       .about-experience {
         display: flex;
         flex-direction: column;
-        max-width: 384px;
-        width: 100%;
         margin-top: 28px;
         padding-top: 28px;
+        max-width: 384px;
+        width: 100%;
         border-top: 1px solid #000;
         gap: 28px 0;
 
@@ -168,14 +171,14 @@ body {
 
         span::before {
           content: "";
+          position: absolute;
+          left: 0;
+          top: 14px;
+          transform: translateY(-50%);
           width: 22px;
           height: 22px;
           border-radius: 999px;
           background-color: #891818;
-          position: absolute;
-          left: 0;
-          top: 16px;
-          transform: translateY(-50%);
         }
       }
     }
@@ -204,11 +207,11 @@ body {
     }
 
     .brand-show {
+      margin-top: 68px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      margin-top: 68px;
       gap: 40px 24px;
 
       @include mw-1279() {
